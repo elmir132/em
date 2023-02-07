@@ -9,8 +9,9 @@
       $.ajax({
         url: proxyUrl + targetUrl,
         type: 'GET',
-        success: function(data) {
-          console.log(data);
+         success: function(data){
+          var floorPrice = data.floorPrice;
+          $("#floorPrice").text(floorPrice);
         },
         error: function(xhr, status, error) {
           console.log('Error: ' + error);
