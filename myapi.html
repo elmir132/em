@@ -1,32 +1,27 @@
-
-
-
-
-
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Floor Price Display</title>
-  </head>
-  <body>
-    <div id="floor-price"></div>
-    
-    <script>
-      const apiEndpoint = 'https://api-mainnet.magiceden.dev/v2/collections/degods/stats';
-    
-      fetch(apiEndpoint)
-        .then(response => response.json())
-        .then(data => {
-          const floorPrice = data.floor_price;
-          document.getElementById("floor-price").innerHTML = `Floor Price: $${floorPrice}`;
-        })
-        .catch(error => console.error(error));
-    </script>
-  </body>
+<head>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script>
+    $(document).ready(function() {
+      $.ajax({
+        type: "GET",
+        url: "getFloorPrice.php",
+        success: function(response) {
+          var floorPrice = response.data.floor_price;
+          $("#floor-price").text(floorPrice);
+        },
+        error: function(error) {
+          console.error(error);
+        }
+      });
+    });
+  </script>
+</head>
+<body>
+  <div id="floor-price"></div>
+</body>
 </html>
-
-
-
 
 
 
