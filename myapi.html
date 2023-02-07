@@ -5,21 +5,26 @@
     <script>
       $(document).ready(function() {
         $.ajax({
-          type: 'GET',
-          url: 'https://cors-anywhere.herokuapp.com/https://api-mainnet.magiceden.dev/v2/collections/degods/stats',
-          success: function(response) {
-            var floorPrice = response.data.floor_price;
-            $("#floor-price").text(floorPrice);
+          type: "GET",
+          url: "https://api-mainnet.magiceden.dev/v2/collections/degods/stats",
+          success: function(data) {
+            if (data && data.floor_price) {
+              $("#floor-price").text(data.floor_price);
+            } else {
+              $("#floor-price").text("Floor price data not available");
+            }
+          },
+          error: function(jqXHR, textStatus, errorThrown) {
+            $("#floor-price").text("An error occurred: " + errorThrown);
           }
         });
       });
     </script>
   </head>
   <body>
-    <div id="floor-price"></div>
+    <div id="floor-price">Loading...</div>
   </body>
 </html>
-
 
 
 
