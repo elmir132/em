@@ -1,27 +1,22 @@
-<!DOCTYPE html>
 <html>
-<head>
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  <script>
-    $(document).ready(function() {
-      $.ajax({
-        type: 'GET',
-        url: 'https://cors-proxy.htmldriven.com/https://api-mainnet.magiceden.dev/v2/collections/degods/stats',
-        dataType: 'json',
-        success: function(data) {
-          if (data && data.floor_price) {
-            $('#floor-price').text(data.floor_price);
+  <head>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+      $(document).ready(function(){
+        $.ajax({
+          url: "https://cors-anywhere.herokuapp.com/https://api-mainnet.magiceden.dev/v2/collections/degods/stats",
+          type: "GET",
+          success: function(data) {
+            $("#floor-price").html(data.floor_price);
           }
-        }
+        });
       });
-    });
-  </script>
-</head>
-<body>
-  Floor price: <span id="floor-price"></span>
-</body>
+    </script>
+  </head>
+  <body>
+    Floor price: <div id="floor-price"></div>
+  </body>
 </html>
-
 
 
 
