@@ -1,28 +1,24 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  <script>
-    $(document).ready(function() {
-      $.ajax({
-        type: "GET",
-        url: "getFloorPrice.php",
-        success: function(response) {
-          var floorPrice = response.data.floor_price;
-          $("#floor-price").text(floorPrice);
-        },
-        error: function(error) {
-          console.error(error);
-        }
+  <head>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+      $(document).ready(function() {
+        $.ajax({
+          type: 'GET',
+          url: 'https://cors-anywhere.herokuapp.com/https://api-mainnet.magiceden.dev/v2/collections/degods/stats',
+          success: function(response) {
+            var floorPrice = response.data.floor_price;
+            $("#floor-price").text(floorPrice);
+          }
+        });
       });
-    });
-  </script>
-</head>
-<body>
-  <div id="floor-price"></div>
-</body>
+    </script>
+  </head>
+  <body>
+    <div id="floor-price"></div>
+  </body>
 </html>
-
 
 
 
