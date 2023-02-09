@@ -1,32 +1,25 @@
-
-  
-  
-  
-  
-  
-  
-  
-  
-  <!DOCTYPE html>
 <html>
-<head>
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <head>
+     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script>
-    $(document).ready(function(){
+    $(document).ready(function() {
+      var proxyUrl = 'https://cors-anywhere.herokuapp.com/';
+      var targetUrl = 'https://api-mainnet.magiceden.dev/v2/collections/degods/stats';
       $.ajax({
-        url: "https://api-mainnet.magiceden.dev/v2/collections/degods/stats",
-        type: "GET",
-        success: function(data){
+        url: proxyUrl + targetUrl,
+        type: 'GET',
+         success: function(data){
           var floorPrice = data.floorPrice;
           $("#floorPrice").text(floorPrice);
+        },
+        error: function(xhr, status, error) {
+          console.log('Error: ' + error);
         }
       });
     });
   </script>
-</head>
-<body>
-  <div id="floorPrice"></div>
-</body>
+  </head>
+  <body>
+   <h1> Floor price:</h1><div id="floorPrice"></div>
+  </body>
 </html>
-
-
