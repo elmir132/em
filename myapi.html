@@ -1,17 +1,20 @@
 <html>
   <head>
+    <link rel="stylesheet" type="text/css" href="myapp.css">
      <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script>
     $(document).ready(function() {
       var proxyUrl = 'https://cors-anywhere.herokuapp.com/';
       var targetUrl = 'https://api-mainnet.magiceden.dev/v2/collections/degods/stats';
-
+      // https://api-mainnet.magiceden.dev/v2/collections/degods
       $.ajax({
         url: proxyUrl + targetUrl,
         type: 'GET',
          success: function(data){
           var floorPrice = data.floorPrice;
           $("#floorPrice").text(floorPrice);
+          var listedCount = data.listedCount;
+          $("#flistedCount").text(listedCount);
         },
         error: function(xhr, status, error) {
           console.log('Error: ' + error);
@@ -19,39 +22,117 @@
       });
     });
   </script>
+
+
+
+
+
+
+
+
+
+
+  <style>
+  /*To center Fp and so on*/
+    
+    .center {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 50vh;
+        display: flex;
+    
+        align-content: stretch;
+        justify-content: space-evenly;
+        align-items: center;
+        flex-direction: row;
+        margin-right: 18%;
+        margin-left: 18%;
+      }
+
+      .header {
+        background-color: none;
+        color: white;
+        /*display: flex;*/
+        justify-content: left;
+        padding: 10px;
+        position: fixed;
+        top: 0;
+        width: -webkit-fill-available;
+      }
+      .good{
+        margin-right:10% 
+      }
+
+      .header h1 {
+        margin: 0;
+      }
+      .header a {
+        color: white;
+        text-decoration: none;
+        margin-right:10% 
+        color: var(--gray-color);
+        display: block;
+        font-size: 1.30em;
+        font-weight: 1000;
+        padding: .5em 2.95em;
+        text-transform: uppercase;
+
+
+      }
+      
+      .header a:hover {
+        color: lightblue;
+        text-decoration: underline;
+      }
+      .header-background {
+        background-color: #ddd;
+        height: 100vh;
+        position: absolute;
+        top: 50px;
+        /*width: 50%;*/
+        z-index: -1;
+      }
+
+
+
+  </style>
   </head>
-  <body>
+  <body style="background-color: #1e2235">
+  
+  <nav class="header-nav container flex-container">
+    <header>
+   <div class="header">
+      <h1 class="logo-link logo" >Elmircan</h1>
+      <ol class="header-menu flex-container">
+        <li><a href="#">HOT!</a></li>
+        <li><a href="#">Watchlist</a></li>
+        <li><a href="#">Flip</a></li>
+      </div>
+    </div>
+    <div class="header-background"></div>
+    <div style="padding: 50px">
+  </header>
+</nav>
+
+
+<div class="center">
    <h1> Floor price:</h1><div id="floorPrice"></div>
+   <h1> Listed Count:</h1><div id="listedCount"></div>
+  <img src="collection-photo.jpg" alt="Collection Photo">
+</div>
+
+
+
+
+
+
   </body>
 </html>
 
 
 
 
-<!-- 
 
-<html>
-  <head>
-    <title>Floor Price Display</title>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  </head>
-  <body>
-    <div id="floor-price"></div>
-    
-    <script>
-     $.ajax({
-  url: "https://cors-anywhere.herokuapp.com/https://api-mainnet.magiceden.dev/v2/collections/degods/stats",
-  type: 'GET',
-  success: function(data) {
-    const floorPrice = data.floor_price;
-    document.getElementById("floor-price").innerHTML = `Floor Price: $${floorPrice}`;
-  },
-  error: function(error) {
-    console.error(error);
-  }
-});
 
-    </script>
-  </body>
-</html> 
- -->
+
